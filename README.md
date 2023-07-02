@@ -3,7 +3,7 @@
 Raspberry Pi Imaging Utility for ThoriumOS
 
  - This is a custom fork of [rpi-imager](https://github.com/raspberrypi/rpi-imager) for [ThoriumOS](https://github.com/Alex313031/ThoriumOS) on Raspberry Pi, with support for the OS repo and the `.bin` images therein.
- - To install (this fork), See > [Releases]()
+ - To install (this fork), See > [Releases](https://github.com/Alex313031/raspi-imager/releases)
  - To install (upstream) on Raspberry Pi OS, Raspbian, or Ubuntu, use `sudo apt update && sudo apt install rpi-imager`.
 
 ## Building on Debian/Ubuntu Linux
