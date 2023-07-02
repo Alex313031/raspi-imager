@@ -1,4 +1,4 @@
-# raspi-imager &nbsp;<img src="https://github.com/Alex313031/raspi-imager/blob/main/logo.png" width="48"></img>
+# raspi-imager &nbsp;<img src="https://github.com/Alex313031/raspi-imager/blob/main/logo.svg" width="48"></img>
 
 Raspberry Pi Imaging Utility for ThoriumOS
 

@@ -30,7 +30,7 @@ esac
 cleanBuild () {
 	printf "\n" &&
 	printf "${bold}${YEL}Cleaning build output directory.${c0}\n" &&
-	rm -r -v ./build
+	sudo rm -r -v ./build
 }
 case $1 in
 	--clean) cleanBuild; exit 0;;
@@ -53,7 +53,7 @@ cmake ../src -DNDEBUG=1 &&
 make VERBOSE=1 V=1 &&
 
 printf "\n" &&
-printf "${GRE}${bold}Build Completed! ${YEL}${bold}You can now sudo make install or make install to install it.\n" &&
+printf "${GRE}${bold}Build Completed! ${YEL}${bold}You can now run make install to install it.\n" &&
 printf "\n" &&
 tput sgr0 &&
 

@@ -362,15 +362,22 @@ else()
         @ONLY)
 
     install(TARGETS raspi-imager DESTINATION bin)
-    install(FILES icons/raspi-imager256.png DESTINATION share/icons/hicolor/256x256/apps)
-    install(FILES icons/raspi-imager128.png DESTINATION share/icons/hicolor/128x128/apps)
-    install(FILES icons/raspi-imager64.png DESTINATION share/icons/hicolor/64x64/apps)
-    install(FILES icons/raspi-imager48.png DESTINATION share/icons/hicolor/48x48/apps)
-    install(FILES icons/raspi-imager32.png DESTINATION share/icons/hicolor/32x32/apps)
-    install(FILES icons/raspi-imager24.png DESTINATION share/icons/hicolor/24x24/apps)
-    install(FILES icons/raspi-imager16.png DESTINATION share/icons/hicolor/16x16/apps)
+    install(FILES icons/hicolor/128x128/raspi-imager.png DESTINATION share/icons/hicolor/128x128/apps)
+    install(FILES icons/hicolor/64x64/raspi-imager.png DESTINATION share/icons/hicolor/64x64/apps)
+    install(FILES icons/hicolor/48x48/raspi-imager.png DESTINATION share/icons/hicolor/48x48/apps)
+    install(FILES icons/hicolor/32x32/raspi-imager.png DESTINATION share/icons/hicolor/32x32/apps)
+    install(FILES icons/hicolor/24x24/raspi-imager.png DESTINATION share/icons/hicolor/24x24/apps)
+    install(FILES icons/hicolor/16x16/raspi-imager.png DESTINATION share/icons/hicolor/16x16/apps)
     install(FILES linux/raspi-imager.desktop DESTINATION share/applications)
     install(FILES "${CMAKE_CURRENT_BINARY_DIR}/raspi-imager.metainfo.xml" DESTINATION share/metainfo)
+
+    configure_file(
+      "${CMAKE_CURRENT_SOURCE_DIR}/cmake_uninstall.cmake.in"
+      "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
+    IMMEDIATE @ONLY)
+    add_custom_target(uninstall
+      COMMAND ${CMAKE_COMMAND} -P
+    ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake)
 endif()
 
 include_directories(${CURL_INCLUDE_DIR} ${LibArchive_INCLUDE_DIR} ${OPENSSL_INCLUDE_DIR})
