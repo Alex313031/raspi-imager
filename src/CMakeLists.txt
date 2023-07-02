@@ -142,7 +142,7 @@ endif()
 set(TRANSLATIONS i18n/raspi-imager_en.ts i18n/raspi-imager_nl.ts i18n/raspi-imager_zh.ts i18n/raspi-imager_tr.ts
     i18n/raspi-imager_fr.ts i18n/raspi-imager_de.ts i18n/raspi-imager_sk.ts i18n/raspi-imager_it.ts
     i18n/raspi-imager_ca.ts i18n/raspi-imager_sl.ts i18n/raspi-imager_ko.ts i18n/raspi-imager_ja.ts
-    i18n/raspi-imager_ru.ts)
+    i18n/raspi-imager_uk.ts i18n/raspi-imager_ru.ts)
 #qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TRANSLATIONS})
 if (Qt5_FOUND)
     qt5_add_translation(QM_FILES ${TRANSLATIONS})
