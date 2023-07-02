@@ -118,8 +118,8 @@
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="456"/>
-        <source>Controlled Folder Access seems to be enabled. Please add both rpi-imager.exe and fat32format.exe to the list of allowed apps and try again.</source>
-        <translation>受控文件夹访问似乎已启用。 请将rpi-imager.exe和fat32format.exe都添加到允许的应用程序列表中，然后重试。</translation>
+        <source>Controlled Folder Access seems to be enabled. Please add both raspi-imager.exe and fat32format.exe to the list of allowed apps and try again.</source>
+        <translation>受控文件夹访问似乎已启用。 请将raspi-imager.exe和fat32format.exe都添加到允许的应用程序列表中，然后重试。</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="463"/>
@@ -656,7 +656,7 @@
     <message>
         <location filename="../main.qml" line="907"/>
         <source>There is a newer version of Imager available.&lt;br&gt;Would you like to visit the website to download it?</source>
-        <translation>有较新版本的rpi-imager。&lt;br&gt;需要下载更新吗？</translation>
+        <translation>有较新版本的raspi-imager。&lt;br&gt;需要下载更新吗？</translation>
     </message>
     <message>
         <location filename="../main.qml" line="1001"/>

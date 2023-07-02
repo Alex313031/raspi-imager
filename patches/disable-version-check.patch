@@ -1,0 +1,17 @@
+Author: Dave Jones <dave.jones@canonical.com>
+Forwarded: not-needed
+Description: Disable version check
+ Updates to this package are handled via the Ubuntu archive rather than direct
+ download from the Raspberry Pi site.
+
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -2,7 +2,7 @@
+ # Copyright (C) 2020 Raspberry Pi Ltd
+ 
+ cmake_minimum_required(VERSION 3.9.4)
+-OPTION (ENABLE_CHECK_VERSION "Check for version updates" ON)
++OPTION (ENABLE_CHECK_VERSION "Check for version updates" OFF)
+ OPTION (ENABLE_TELEMETRY "Enable sending telemetry" ON)
+ 
+ project(rpi-imager LANGUAGES CXX C)

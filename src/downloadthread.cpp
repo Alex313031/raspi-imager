@@ -453,7 +453,7 @@ void DownloadThread::run()
                                    QSettings::Registry64Format);
                 if (registry.value("EnableControlledFolderAccess").toInt() == 1)
                 {
-                    msg += "<br>"+tr("Controlled Folder Access seems to be enabled. Please add both rpi-imager.exe and fat32format.exe to the list of allowed apps and try again.");
+                    msg += "<br>"+tr("Controlled Folder Access seems to be enabled. Please add both raspi-imager.exe and fat32format.exe to the list of allowed apps and try again.");
                 }
                 _onDownloadError(msg);
             }
@@ -949,7 +949,7 @@ bool DownloadThread::_customizeImage()
             else if (issue.contains("pi-gen"))
             {
                 /* If issue.txt mentions pi-gen, and there is no user-data file assume
-                 * it is a RPI OS flavor, and use the old systemd unit firstrun script stuff */
+                 * it is a Raspi OS flavor, and use the old systemd unit firstrun script stuff */
                 _initFormat = "systemd";
                 qDebug() << "using firstrun script invoked by systemd customization method";
             }

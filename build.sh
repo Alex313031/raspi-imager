@@ -19,15 +19,26 @@ try() { "$@" || die "${RED}Failed $*"; }
 displayHelp () {
 	printf "\n" &&
 	printf "${bold}${GRE}Script to build raspi-imager on Linux.${c0}\n" &&
+	printf "${bold}${YEL}Use the --clean flag to clean the build output directory.${c0}\n" &&
 	printf "\n"
 }
 case $1 in
 	--help) displayHelp; exit 0;;
 esac
 
+# --clean
+cleanBuild () {
+	printf "\n" &&
+	printf "${bold}${YEL}Cleaning build output directory.${c0}\n" &&
+	rm -r -v ./build
+}
+case $1 in
+	--clean) cleanBuild; exit 0;;
+esac
+
 printf "\n" &&
 printf "${bold}${GRE}Script to build raspi-imager on Linux.${c0}\n" &&
-printf "${YEL}Building nvtop...\n" &&
+printf "${YEL}Building raspi-imager...\n" &&
 printf "${CYA}\n" &&
 
 # Build htop
@@ -42,7 +53,7 @@ cmake ../src -DNDEBUG=1 &&
 make VERBOSE=1 V=1 &&
 
 printf "\n" &&
-printf "${GRE}${bold}Build Completed. ${YEL}${bold}You can now sudo make install or make install to install it.\n" &&
+printf "${GRE}${bold}Build Completed! ${YEL}${bold}You can now sudo make install or make install to install it.\n" &&
 printf "\n" &&
 tput sgr0 &&
 

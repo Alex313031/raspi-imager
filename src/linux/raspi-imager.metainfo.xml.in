@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <component type="desktop-application">
-  <id>org.raspberrypi.rpi-imager</id>
+  <id>com.alex313031.raspi-imager</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>Apache-2.0</project_license>
   <name>Raspberry Pi Imager</name>
@@ -27,7 +27,7 @@
       download the file again.
     </p>
   </description>
-  <launchable type="desktop-id">rpi-imager.desktop</launchable>
+  <launchable type="desktop-id">raspi-imager.desktop</launchable>
   <screenshots>
     <screenshot type="default">
       <image>http://downloads.raspberrypi.org/imager/IMAGING-UTILITY-MAIN.png</image>
@@ -50,9 +50,9 @@
       <caption>Write done</caption>
     </screenshot>
   </screenshots>
-  <url type="homepage">https://github.com/raspberrypi/rpi-imager</url>
+  <url type="homepage">https://github.com/Alex313031/raspi-imager</url>
   <provides>
-    <binary>rpi-imager</binary>
+    <binary>raspi-imager</binary>
   </provides>
   <releases>
     <release version="@IMAGER_VERSION_STR@" />

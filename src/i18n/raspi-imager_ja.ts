@@ -130,8 +130,8 @@
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="456"/>
-        <source>Controlled Folder Access seems to be enabled. Please add both rpi-imager.exe and fat32format.exe to the list of allowed apps and try again.</source>
-        <translation>フォルダーへのアクセスが制限されています。許可されたアプリにrpi-imager.exeとfat32format.exeを入れてもう一度お試しください。</translation>
+        <source>Controlled Folder Access seems to be enabled. Please add both raspi-imager.exe and fat32format.exe to the list of allowed apps and try again.</source>
+        <translation>フォルダーへのアクセスが制限されています。許可されたアプリにraspi-imager.exeとfat32format.exeを入れてもう一度お試しください。</translation>
     </message>
     <message>
         <location filename="../downloadthread.cpp" line="463"/>

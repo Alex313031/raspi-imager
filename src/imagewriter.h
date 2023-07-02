@@ -3,6 +3,7 @@
 
 /*
  * SPDX-License-Identifier: Apache-2.0
+ * Copyright (C) 2023 Alex313031
  * Copyright (C) 2020 Raspberry Pi Ltd
  */
 
@@ -64,6 +65,9 @@ public:
 
     /* Function to return OS list URL */
     Q_INVOKABLE QUrl constantOsListUrl() const;
+
+    /* Function to return repository URL */
+    Q_INVOKABLE QString constantRepoUrl() const;
 
     /* Function to return version */
     Q_INVOKABLE QString constantVersion() const;

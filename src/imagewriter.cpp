@@ -1,5 +1,6 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
+ * Copyright (C) 2023 Alex313031
  * Copyright (C) 2020 Raspberry Pi Ltd
  */
 
@@ -101,7 +102,7 @@ ImageWriter::ImageWriter(QObject *parent)
     {
         /* Settings file is not writable, probably run by root previously */
         QString settingsFile = _settings.fileName();
-        qDebug() << "Settings file" << settingsFile << "not writable. Recreating it";
+        qDebug() << "Settings file" << settingsFile << "is not writable! Recreating it...";
         QFile f(_settings.fileName());
         QByteArray oldsettings;
 
@@ -119,7 +120,7 @@ ImageWriter::ImageWriter(QObject *parent)
         }
         else
         {
-            qDebug() << "Error deleting and recreating settings file. Please remove manually.";
+            qDebug() << "Error deleting and recreating settings file! Please remove it manually.";
         }
     }
 
@@ -139,7 +140,7 @@ ImageWriter::ImageWriter(QObject *parent)
     }
     _settings.endGroup();
 
-    QDir dir(":/i18n", "rpi-imager_*.qm");
+    QDir dir(":/i18n", "raspi-imager_*.qm");
     const QStringList transFiles = dir.entryList();
     QLocale currentLocale;
     QStringList localeComponents = currentLocale.name().split('_');
@@ -245,7 +246,7 @@ void ImageWriter::startWrite()
 
     if (_devLen && _extrLen > _devLen)
     {
-        emit error(tr("Storage capacity is not large enough.<br>Needs to be at least %1 GB.").arg(QString::number(_extrLen/1000000000.0, 'f', 1)));
+        emit error(tr("Storage capacity is not large enough.<br>It needs to be at least %1 GB.").arg(QString::number(_extrLen/1000000000.0, 'f', 1)));
         return;
     }
 
@@ -281,7 +282,7 @@ void ImageWriter::startWrite()
     connect(_thread, SIGNAL(finalizing()), SLOT(onFinalizing()));
     connect(_thread, SIGNAL(preparationStatusUpdate(QString)), SLOT(onPreparationStatusUpdate(QString)));
     _thread->setVerifyEnabled(_verifyEnabled);
-    _thread->setUserAgent(QString("Mozilla/5.0 rpi-imager/%1").arg(constantVersion()).toUtf8());
+    _thread->setUserAgent(QString("Mozilla/5.0 raspi-imager/%1").arg(constantVersion()).toUtf8());
     _thread->setImageCustomization(_config, _cmdline, _firstrun, _cloudinit, _cloudinitNetwork, _initFormat);
 
     if (!_expectedHash.isEmpty() && _cachedFileHash != _expectedHash && _cachingEnabled)
@@ -296,7 +297,7 @@ void ImageWriter::startWrite()
             }
             else
             {
-                qDebug() << "Error removing old cache file. Disabling caching";
+                qDebug() << "Error removing old cache file. Disabling caching.";
                 _cachingEnabled = false;
             }
         }
@@ -395,6 +396,12 @@ QUrl ImageWriter::constantOsListUrl() const
     return _repo;
 }
 
+/* Function to return repository URL */
+QString ImageWriter::constantRepoUrl() const
+{
+    return REPO_URL;
+}
+
 /* Function to return version */
 QString ImageWriter::constantVersion() const
 {
@@ -439,7 +446,7 @@ DriveListModel *ImageWriter::getDriveList()
 
 void ImageWriter::startProgressPolling()
 {
-    _powersave.applyBlock(tr("Downloading and writing image"));
+    _powersave.applyBlock(tr("Downloading and writing image..."));
 #ifdef Q_OS_WIN
     if (!_taskbarButton && _engine)
     {
@@ -574,7 +581,7 @@ void ImageWriter::openFileDialog()
 
     QFileDialog *fd = new QFileDialog(nullptr, tr("Select image"),
                                       path,
-                                      "Image files (*.img *.zip *.iso *.gz *.xz *.zst);;All files (*)");
+                                      "Image files (*.img *.zip *.iso *.gz *.xz *.zst *.bin);;All files (*)");
     connect(fd, SIGNAL(fileSelected(QString)), SLOT(onFileSelected(QString)));
 
     if (_engine)
@@ -611,7 +618,7 @@ void ImageWriter::onFileSelected(QString filename)
     }
     else
     {
-        qDebug() << "Item selected is not a regular file";
+        qDebug() << "Item selected is not a regular file!";
     }
 
     sender()->deleteLater();
@@ -705,7 +712,7 @@ void ImageWriter::onTimeSyncReply(QNetworkReply *reply)
     }
     else
     {
-        qDebug() << "Error synchronizing time. Trying again in 3 seconds";
+        qDebug() << "Error synchronizing time! Trying again in 3 seconds...";
         QTimer::singleShot(3000, this, SLOT(syncTime()));
     }
 
@@ -762,7 +769,7 @@ QByteArray ImageWriter::getUsbSourceOSlist()
     QJsonArray oslist;
     QDir dir("/media");
     const QStringList medialist = dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot);
-    QStringList namefilters = {"*.img", "*.zip", "*.gz", "*.xz", "*.zst"};
+    QStringList namefilters = {"*.img", "*.zip", "*.gz", "*.xz", "*.zst", "*.bin"};
 
     for (const QString &devname : medialist)
     {
@@ -992,10 +999,10 @@ void ImageWriter::changeLanguage(const QString &newLanguageName)
         return;
 
     QString langcode = _translations[newLanguageName];
-    qDebug() << "Changing language to" << langcode;
+    qDebug() << "Note: Changing language to" << langcode;
 
     QTranslator *trans = new QTranslator();
-    if (trans->load(":/i18n/rpi-imager_"+langcode+".qm"))
+    if (trans->load(":/i18n/raspi-imager_"+langcode+".qm"))
     {
         replaceTranslator(trans);
         _currentLang = newLanguageName;
@@ -1003,7 +1010,7 @@ void ImageWriter::changeLanguage(const QString &newLanguageName)
     }
     else
     {
-        qDebug() << "Failed to load translation file";
+        qDebug() << "Failed to load translation file" << langcode << ".qm";
         delete trans;
     }
 }

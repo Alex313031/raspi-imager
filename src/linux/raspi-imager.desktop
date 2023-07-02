@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Raspi Imager
+GenericName=Imager
+Comment=Raspberry Pi Imager
+Icon=raspi-imager
+Exec=raspi-imager
+Categories=Utility;System
+StartupNotify=false
+Terminal=false
+X-MultipleArgs=True
+StartupWMClass=raspi-imager

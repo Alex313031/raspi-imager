@@ -3,12 +3,16 @@
 
 /*
  * SPDX-License-Identifier: Apache-2.0
+ * Copyright (C) 2023 Alex313031
  * Copyright (C) 2020 Raspberry Pi Ltd
  */
 
 
-/* Repository URL */
+/* Download OS List URL */
 #define OSLIST_URL                        "https://downloads.raspberrypi.org/os_list_imagingutility_v3.json"
+
+/* Repository URL */
+#define REPO_URL                          "https://github.com/Alex313031/raspi-imager"
 
 /* Time synchronization URL (only used on eglfs QPA platform, URL must be HTTP) */
 #define TIME_URL                          "http://downloads.raspberrypi.org/os_list_imagingutility_v3.json?time_synchronization"

@@ -87,8 +87,8 @@ int main(int argc, char *argv[])
 #endif
     app.setOrganizationName("Raspberry Pi");
     app.setOrganizationDomain("raspberrypi.org");
-    app.setApplicationName("Imager");
-    app.setWindowIcon(QIcon(":/icons/rpi-imager.ico"));
+    app.setApplicationName("Raspi Imager");
+    app.setWindowIcon(QIcon(":/icons/raspi-imager.ico"));
     ImageWriter imageWriter;
     NetworkAccessManagerFactory namf;
     QQmlApplicationEngine engine;
@@ -177,14 +177,38 @@ int main(int argc, char *argv[])
         }
         else if (args[i] == "--help")
         {
-            cerr << args[0] << " [--debug] [--version] [--repo <repository URL>] [--qm <custom qm translation file>] [--disable-telemetry] [<image file to write>]" << endl;
+            cerr << args[0] << " [--debug] [--version | -v] [--help | -h] [--repo <repository URL>] [--qm <custom qm translation file>] [--disable-telemetry] [<image file to write>]" << endl;
+            cerr << "-OR- " << args[0] << " --cli [--disable-verify] [--sha256 <expected hash>] [--debug] [--quiet] <image file to write> <destination drive device>" << endl;
+            return 0;
+        }
+        else if (args[i] == "-h")
+        {
+            cerr << args[0] << " [--debug] [--version | -v] [--help | -h] [--repo <repository URL>] [--qm <custom qm translation file>] [--disable-telemetry] [<image file to write>]" << endl;
             cerr << "-OR- " << args[0] << " --cli [--disable-verify] [--sha256 <expected hash>] [--debug] [--quiet] <image file to write> <destination drive device>" << endl;
             return 0;
         }
         else if (args[i] == "--version")
         {
-            cerr << args[0] << " version " << imageWriter.constantVersion() << endl;
-            cerr << "Repository: " << imageWriter.constantOsListUrl().toString() << endl;
+            cerr << args[0] << endl;
+            cerr << endl;
+            cerr << "Raspi Imager v" << imageWriter.constantVersion() << endl;
+            cerr << endl;
+            cerr << "OS List URL: " << imageWriter.constantOsListUrl().toString() << endl;
+            cerr << endl;
+            cerr << "Repository: " << imageWriter.constantRepoUrl() << endl;
+            cerr << endl;
+            return 0;
+        }
+        else if (args[i] == "-v")
+        {
+            cerr << args[0] << endl;
+            cerr << endl;
+            cerr << "Raspi Imager v" << imageWriter.constantVersion() << endl;
+            cerr << endl;
+            cerr << "OS List URL: " << imageWriter.constantOsListUrl().toString() << endl;
+            cerr << endl;
+            cerr << "Repository: " << imageWriter.constantRepoUrl() << endl;
+            cerr << endl;
             return 0;
         }
         else if (args[i] == "--disable-telemetry")
@@ -202,6 +226,9 @@ int main(int argc, char *argv[])
         else
         {
             cerr << "Ignoring unknown argument: " << args[i] << endl;
+            cerr << endl;
+            cerr << "Please run with the --help argument to see a list of cmdline flags." << endl;
+            cerr << endl;
         }
     }
 
@@ -225,7 +252,7 @@ int main(int argc, char *argv[])
         QLocale::setDefault(QLocale(langcode));
 #endif
 
-        if (translator->load(QLocale(), "rpi-imager", "_", QLatin1String(":/i18n")))
+        if (translator->load(QLocale(), "raspi-imager", "_", QLatin1String(":/i18n")))
             imageWriter.replaceTranslator(translator);
         else
             delete translator;
@@ -272,7 +299,7 @@ int main(int argc, char *argv[])
     {
         if ( !app.screenAt(QPoint(x,y)) || !app.screenAt(QPoint(x+w,y+h)) )
         {
-            qDebug() << "Not restoring saved window position as it falls outside any currently attached screen";
+            qDebug() << "Note: Not restoring saved window position as it falls outside any currently attached screen.";
             x = y = -1;
         }
     }
