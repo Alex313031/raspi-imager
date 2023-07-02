@@ -13,5 +13,6 @@
         <file>raspi-imager_zh.qm</file>
         <file>raspi-imager_ca.qm</file>
         <file>raspi-imager_ja.qm</file>
+        <file>raspi-imager_uk.qm</file>
     </qresource>
 </RCC>

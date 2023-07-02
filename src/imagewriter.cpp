@@ -14,6 +14,7 @@
 #include "downloadstatstelemetry.h"
 #include "wlancredentials.h"
 #include <archive.h>
+#include <config.h>
 #include <archive_entry.h>
 #include <random>
 #include <QFileInfo>
