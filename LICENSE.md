@@ -2,6 +2,7 @@
 Raspberry Pi Imaging Utility main code license terms
 ==
 
+Copyright (C) 2023 Alex313031
 Copyright (C) 2020 Raspberry Pi Ltd
 
 Licensed under the Apache License, Version 2.0 (the "License");
