@@ -19,6 +19,7 @@ try() { "$@" || die "${RED}Failed $*"; }
 displayHelp () {
 	printf "\n" &&
 	printf "${bold}${GRE}Script to build raspi-imager on Linux.${c0}\n" &&
+	printf "${bold}${YEL}Use the --deps flag to install build dependencies.${c0}\n" &&
 	printf "${bold}${YEL}Use the --clean flag to clean the build output directory.${c0}\n" &&
 	printf "\n"
 }
@@ -26,10 +27,20 @@ case $1 in
 	--help) displayHelp; exit 0;;
 esac
 
+# --deps
+instDeps () {
+	printf "\n" &&
+	printf "${bold}${YEL}Installing build dependencies...${c0}\n" &&
+	sudo apt install build-essential devscripts debhelper cmake git libarchive-dev libcurl4-gnutls-dev qtbase5-dev qtbase5-dev-tools qtdeclarative5-dev libqt5svg5-dev qttools5-dev libgnutls28-dev qml-module-qtquick2 qml-module-qtquick-controls2 qml-module-qtquick-layouts qml-module-qtquick-templates2 qml-module-qtquick-window2 qml-module-qtgraphicaleffects
+}
+case $1 in
+	--deps) instDeps; exit 0;;
+esac
+
 # --clean
 cleanBuild () {
 	printf "\n" &&
-	printf "${bold}${YEL}Cleaning build output directory.${c0}\n" &&
+	printf "${bold}${YEL}Cleaning build output directory...${c0}\n" &&
 	sudo rm -r -v ./build
 }
 case $1 in
